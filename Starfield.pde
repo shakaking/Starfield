@@ -1,15 +1,45 @@
-//your code here
+NormalParticle [] stars;
 void setup()
 {
-	//your code here
+	size(800,800);
+	stars= new NormalParticle[10];
+	for(int p=0; p < stars.length; p++)
+	{
+		stars[p] = new NormalParticle();
+	}
 }
+
 void draw()
 {
-	//your code here
+	background(0);
+	for (int p=0; p<stars.length; p++)
+	{
+		stars[p].move();
+		stars[p].show();
+	}
 }
 class NormalParticle
 {
-	//your code here
+	double x,y, speed, angle;
+	int starC;
+	NormalParticle()
+	{
+		x=400;
+		y=400;
+		starC=color((int)(Math.random()*255));
+		fill(starC);
+		angle=3.14;
+		speed=4;
+	}
+	void move()
+	{
+		x+=(Math.cos(angle)*speed);
+		y+=(Math.sin(angle)*speed);
+	}
+	void show()
+	{
+		ellipse((int)x,(int)y,10,10);
+	}
 }
 interface Particle
 {
