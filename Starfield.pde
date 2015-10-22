@@ -4,7 +4,7 @@ void setup()
 	noStroke();
 	size(800,800);
 	stars= new Particle[500];
-	for(int p=0; p < stars.length; p++)
+	for(int p=1; p < stars.length; p++)
 	{
 		stars[p] = new NormalParticle();
 	}
@@ -66,13 +66,13 @@ interface Particle
 class OddballParticle implements Particle
 {
 	double oddX, oddY, oddSpeed, oddAngle;
-	OddParticle()
+	OddballParticle()
 	{
 		oddX = 400;
 		oddY = 400;
 		fill(255,0,0);
 		oddSpeed = (Math.random()*8);
-		oddAngle = (Math.random()*Math.PI);
+		oddAngle = (Math.random()*0.001*Math.PI);
 	}
 	public void move()
 	{
@@ -91,11 +91,11 @@ class OddballParticle implements Particle
 		oddY=400;
 		fill(255,0,0);
 		oddAngle=(Math.random()*2*Math.PI);
-		odSpeed=(Math.random()*8);
+		oddSpeed=(Math.random()*8);
 		}
 	}
 }
-class JumboParticle extends Particle
+//class JumboParticle extends Particle
 {
 	//jumboS
 }
