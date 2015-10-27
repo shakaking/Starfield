@@ -4,11 +4,12 @@ void setup()
 	noStroke();
 	size(800,800);
 	stars= new Particle[500];
-	for(int p=1; p < stars.length; p++)
+	for(int p=2; p < stars.length; p++)
 	{
 		stars[p] = new NormalParticle();
 	}
 	stars [0] = new OddballParticle();
+	stars [1] = new JumboParticle();
 }
 
 void draw()
@@ -25,7 +26,7 @@ void draw()
 class NormalParticle implements Particle
 {
 	double x,y, speed, angle;
-	int starC1, starC2, starC3;
+	int sizez;
 	NormalParticle()
 	{
 		x=400;
@@ -33,6 +34,7 @@ class NormalParticle implements Particle
 		fill(255);
 		angle=(Math.random()*2*Math.PI);
 		speed=(Math.random()*8);
+		sizez = 3;
 	}
 	public void move()
 	{
@@ -42,7 +44,7 @@ class NormalParticle implements Particle
 	}
 	public void show()
 	{
-		ellipse((int)x,(int)y,3,3);
+		ellipse((int)x,(int)y,sizez,sizez);
 	}
 	public void wrap()
 	{
@@ -70,17 +72,17 @@ class OddballParticle implements Particle
 	{
 		oddX = 400;
 		oddY = 400;
-		fill(255,0,0);
-		oddSpeed = (Math.random()*8);
-		oddAngle = (Math.random()*0.001*Math.PI);
+		oddSpeed = (Math.random()*4)+20;
+		oddAngle = (Math.random()*2 *Math.PI);
 	}
 	public void move()
 	{
-		oddX += (Math.cos(oddAngle)*oddSpeed);
+		oddX += (Math.tan(oddAngle)*oddSpeed);
 		oddY += (Math.sin(oddAngle)*oddSpeed);
 	}
 	public void show()
 	{
+		fill(255,255,0);
 		ellipse((int)oddX, (int)oddY, 20,20);
 	}
 	public void wrap()
@@ -89,14 +91,15 @@ class OddballParticle implements Particle
 		{
 		oddX=400;
 		oddY=400;
-		fill(255,0,0);
 		oddAngle=(Math.random()*2*Math.PI);
-		oddSpeed=(Math.random()*8);
+		oddSpeed=(Math.random()*4)+20;
 		}
 	}
 }
-//class JumboParticle extends Particle
+class JumboParticle extends NormalParticle
 {
-	//jumboS
+	JumboParticle()
+	{
+		sizez=50;
+	}
 }
-
